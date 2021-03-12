@@ -13,7 +13,7 @@ COMMAND_HANDLERS = {c.__name__.lower(): c()
 ###############################################################################
 
 
-async def handle_command(command, args, message, bot_client):
+async def handle_command(command, args, message, bot_client, pug):
     # Check whether the command is supported, stop silently if it's not
     # (to prevent unnecesary spam if our bot shares the same command prefix 
     # with some other bot)
@@ -28,4 +28,4 @@ async def handle_command(command, args, message, bot_client):
     if cmd_obj.params and len(args) < len(cmd_obj.params):
         await message.channel.send(message.author.mention + " Insufficient parameters!")
     else:
-        await cmd_obj.handle(args, message, bot_client)
+        await cmd_obj.handle(args, message, bot_client, pug)
